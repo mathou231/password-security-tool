@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Security Tool | CyberSec Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Password Security Tool</h1>
+            </div>
+            <p class="tagline">Générateur et analyseur de mots de passe sécurisés</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Generator Section -->
+            <section class="section generator-section">
+                <h2><i class="fas fa-key"></i> Générateur de mots de passe</h2>
+                <div class="generator-controls">
+                    <div class="control-group">
+                        <label for="length">Longueur: <span id="length-value">12</span></label>
+                        <input type="range" id="length" min="4" max="50" value="12">
+                    </div>
+                    <div class="checkboxes">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="uppercase" checked>
+                            <span class="checkmark"></span>
+                            Majuscules (A-Z)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="lowercase" checked>
+                            <span class="checkmark"></span>
+                            Minuscules (a-z)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="numbers" checked>
+                            <span class="checkmark"></span>
+                            Chiffres (0-9)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="symbols" checked>
+                            <span class="checkmark"></span>
+                            Symboles (!@#$...)
+                        </label>
+                    </div>
+                </div>
+                <button class="generate-btn" id="generate-btn">
+                    <i class="fas fa-sync-alt"></i> Générer
+                </button>
+                <div class="password-result">
+                    <input type="text" id="generated-password" placeholder="Votre mot de passe apparaîtra ici..." readonly>
+                    <button class="copy-btn" id="copy-btn" title="Copier">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Analyzer Section -->
+            <section class="section analyzer-section">
+                <h2><i class="fas fa-search"></i> Analyseur de sécurité</h2>
+                <div class="analyzer-input">
+                    <input type="password" id="password-input" placeholder="Tapez votre mot de passe pour l'analyser...">
+                    <button class="toggle-visibility" id="toggle-visibility">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                
+                <div class="strength-meter">
+                    <div class="strength-bar">
+                        <div class="strength-fill" id="strength-fill"></div>
+                    </div>
+                    <div class="strength-text" id="strength-text">Tapez un mot de passe</div>
+                </div>
+
+                <div class="analysis-details" id="analysis-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Longueur:</span>
+                        <span class="detail-value" id="length-check">0 caractères</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Temps de crack estimé:</span>
+                        <span class="detail-value" id="crack-time">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Entropie:</span>
+                        <span class="detail-value" id="entropy">0 bits</span>
+                    </div>
+                </div>
+
+                <div class="security-tips" id="security-tips">
+                    <h3>Conseils de sécurité</h3>
+                    <ul id="tips-list">
+                        <li>Utilisez au moins 12 caractères</li>
+                        <li>Mélangez majuscules, minuscules, chiffres et symboles</li>
+                        <li>Évitez les mots du dictionnaire</li>
+                        <li>N'utilisez pas d'informations personnelles</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="section stats-section">
+                <h2><i class="fas fa-chart-bar"></i> Statistiques</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>81%</h3>
+                            <p>des violations dues à des mots de passe faibles</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>&lt; 1 sec</h3>
+                            <p>pour cracker "password123"</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>12+ chars</h3>
+                            <p>longueur minimum recommandée</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="passwords-generated">0</h3>
+                            <p>mots de passe générés</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 - Password Security Tool | Développé pour le portfolio cybersécurité</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
